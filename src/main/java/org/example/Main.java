@@ -21,7 +21,7 @@ public class Main {
 
         // вывод на экран ответа второго задания
         System.out.println(merge(example2, example3));
-
+        // вывод ответа третьего
         System.out.println(romanToInt("MMXXV"));
     }
     /*
