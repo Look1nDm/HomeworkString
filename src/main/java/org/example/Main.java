@@ -95,19 +95,55 @@ public class Main {
         int[] arabicNumbers = {0, 1, 4, 5, 9, 10, 40, 50, 90, 100, 400, 500, 900, 1000};
         String[] romanNumbers = {"", "I", "IV", "V", "IX", "X", "XL", "L", "XC", "C", "CD", "D", "CM", "M"};
         int result = 0;
+        String temp;
 
         for (int i = 0; i < s.length(); i++) {
             for (int j = (romanNumbers.length - 1); j > 0; ) {
-                if (s.contains(romanNumbers[j])) {
+                if (s.length() > 1) {
+                    temp = String.valueOf(s.charAt(i)) + String.valueOf(s.charAt(i + 1));
+                } else {
+                    temp = s;
+                }
+                if (romanNumbers[j].equals(temp)) {
                     result += arabicNumbers[j];
                     s = s.substring(s.indexOf(romanNumbers[j]) + 1);
                     i = 0;
                 } else {
-                    j--;
+                    if (s.length() > 1) {
+                        temp = String.valueOf(s.charAt(i));
+                    } else {
+                        temp = s;
+                    }
+                    if (romanNumbers[j].equals(temp)) {
+                        result += arabicNumbers[j];
+                        s = s.substring(s.indexOf(romanNumbers[j]) + 1);
+                        i = 0;
+                    } else {
+                        j--;
+                    }
                 }
             }
         }
         return result;
     }
+
+//    static int romanToInt(String s) {
+//        int[] arabicNumbers = {0, 1, 4, 5, 9, 10, 40, 50, 90, 100, 400, 500, 900, 1000};
+//        String[] romanNumbers = {"", "I", "IV", "V", "IX", "X", "XL", "L", "XC", "C", "CD", "D", "CM", "M"};
+//        int result = 0;
+//
+//        for (int i = 0; i < s.length(); i++) {
+//            for (int j = (romanNumbers.length - 1); j > 0; ) {
+//                if (s.contains(romanNumbers[j])) {
+//                    result += arabicNumbers[j];
+//                    s = s.substring(s.indexOf(romanNumbers[j]) + 1);
+//                    i = 0;
+//                } else {
+//                    j--;
+//                }
+//            }
+//        }
+//        return result;
+//    }
 
 }
